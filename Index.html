@@ -10,32 +10,42 @@
       integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
       crossorigin="anonymous"
     />
-    <link href="https://css.gg/css" rel="stylesheet" />
     <link rel="stylesheet" href="src/style.css" />
+
     <title>Vanilla Weather App</title>
   </head>
   <body>
     <div class="container">
-      <div class="cont_weather">
-        <h1>San Juan</h1>
-        <ul>
-          <li>Wednesday 10:00pm</li>
-          <li>Clear</li>
-        </ul>
-        <div class="row">
-          <div class="col-6">
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-              alt="Sunny"
-            />
-            80°F | 30°C
-          </div>
-          <div class="col-6">
+      <div class="cont-wrapper">
+        <div class="cont_weather">
+          <div class="overview">
+            <h1>San Juan</h1>
             <ul>
-              <li>Precipitation: 0%</li>
-              <li>Humidity:85%</li>
-              <li>Wind:15mph</li>
+              <li>Wednesday 3:00pm</li>
+              <li>Sunny</li>
             </ul>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="clearfix weather-temperature">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+                  alt="Sunny"
+                  class="float-left"
+                />
+                <div class="float-left">
+                  <strong>80</strong
+                  ><span class="units">°F | <a href="#">°C</a></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li>Precipitation: 0%</li>
+                <li>Humidity:85%</li>
+                <li>Wind:15mph</li>
+              </ul>
+            </div>
           </div>
         </div>
         <small>
