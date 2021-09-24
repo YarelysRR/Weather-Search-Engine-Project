@@ -10,6 +10,7 @@
       integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
 
     <title>Vanilla Weather App</title>
@@ -19,10 +20,10 @@
       <div class="cont-wrapper">
         <div class="cont_weather">
           <div class="overview">
-            <h1>San Juan</h1>
+            <h1 id="city"></h1>
             <ul>
-              <li>Wednesday 3:00pm</li>
-              <li>Sunny</li>
+              <li>Last updated: <span id="date"></span></li>
+              <li id="description"></li>
             </ul>
           </div>
           <div class="row">
@@ -34,16 +35,15 @@
                   class="float-left"
                 />
                 <div class="float-left">
-                  <strong>80</strong
+                  <strong id="temp"></strong
                   ><span class="units">°F | <a href="#">°C</a></span>
                 </div>
               </div>
             </div>
             <div class="col-6">
               <ul>
-                <li>Precipitation: 0%</li>
-                <li>Humidity:85%</li>
-                <li>Wind:15mph</li>
+                <li>Humidity:<span id="humidity"></span>%</li>
+                <li>Wind:<span id="wind"></span> mph</li>
               </ul>
             </div>
           </div>
