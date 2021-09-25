@@ -62,6 +62,9 @@ li:first-letter {
   font-size: 16px;
   top: -34;
 }
+.float-left {
+  float: left;
+}
 
 .weather-temperature .active {
   color: rgb(33, 33, 33);
