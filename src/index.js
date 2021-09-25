@@ -33,7 +33,8 @@ function displayTemp(response) {
   let windElement = document.querySelector("#wind");
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
-  tempElement.innerHTML = Math.round(response.data.main.temp);
+  fahrenheitTemp = response.data.main.temp;
+  tempElement.innerHTML = Math.round(fahrenheitTemp);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
@@ -46,8 +47,34 @@ function displayTemp(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
+function displayCTemp(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temp");
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+
+  let celsiusTemp = (fahrenheitTemp - 32) / 1.8;
+  tempElement.innerHTML = Math.round(celsiusTemp);
+}
+
+function displayFTemp(event) {
+  event.preventDefault();
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
+  let tempElement = document.querySelector("#temp");
+  tempElement.innerHTML = Math.round(fahrenheitTemp);
+}
+
+let fahrenheitTemp = null;
+
 let apiKey = "8d3b4eb3bfd4da849a5a61c1e36fe700";
 let city = "San Juan";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
 
 axios.get(apiUrl).then(displayTemp);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCTemp);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFTemp);
