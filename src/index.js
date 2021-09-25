@@ -58,11 +58,6 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", handleSubmit);
-
-search("New York");
-
 function displayCTemp(event) {
   event.preventDefault();
   let tempElement = document.querySelector("#temp");
@@ -83,14 +78,13 @@ function displayFTemp(event) {
 
 let fahrenheitTemp = null;
 
-let apiKey = "8d3b4eb3bfd4da849a5a61c1e36fe700";
-let city = "San Juan";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-
-axios.get(apiUrl).then(displayTemp);
-
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCTemp);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFTemp);
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
+
+search("San Juan");
