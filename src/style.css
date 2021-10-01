@@ -1,5 +1,6 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background: whitesmoke;
 }
 
 h1 {
@@ -44,6 +45,14 @@ li:first-letter {
 }
 .overview {
   margin-bottom: 20px;
+}
+
+#currentButton {
+  position: relative;
+  top: 3px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
 }
 .weather-temperature img {
   margin-right: 5px;

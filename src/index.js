@@ -73,10 +73,9 @@ function displayForecast(response) {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "8d3b4eb3bfd4da849a5a61c1e36fe700";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
-  console.log(apiUrl);
+
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -133,6 +132,19 @@ function displayFTemp(event) {
   tempElement.innerHTML = Math.round(fahrenheitTemp);
 }
 
+function getPosition(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(GetCurrentLocation);
+}
+
+function GetCurrentLocation(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiKey = "8d3b4eb3bfd4da849a5a61c1e36fe700";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(displayTemp);
+}
+
 let fahrenheitTemp = null;
 
 let celsiusLink = document.querySelector("#celsius-link");
@@ -143,5 +155,8 @@ fahrenheitLink.addEventListener("click", displayFTemp);
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let currentLocationButton = document.querySelector("#currentButton");
+currentLocationButton.addEventListener("click", getPosition);
 
 search("San Juan");
