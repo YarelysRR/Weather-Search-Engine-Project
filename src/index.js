@@ -2,7 +2,7 @@ function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
-    hours = `0${minutes}`;
+    hours = `0${hours}`;
   }
   let minutes = date.getMinutes();
 
@@ -75,7 +75,7 @@ function displayForecast(response) {
 function getForecast(coordinates) {
   let apiKey = "8d3b4eb3bfd4da849a5a61c1e36fe700";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
-
+  console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -117,8 +117,8 @@ function handleSubmit(event) {
 function displayCTemp(event) {
   event.preventDefault();
   let tempElement = document.querySelector("#temp");
-  fahrenheitLink.classList.remove("active");
   celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
 
   let celsiusTemp = (fahrenheitTemp - 32) / 1.8;
   tempElement.innerHTML = Math.round(celsiusTemp);
